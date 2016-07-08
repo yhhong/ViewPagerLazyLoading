@@ -21,24 +21,33 @@ public abstract class BasePageFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         isViewInitiated = true;
-        prepareFetchData();
+        fetchDataInForeground();
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         this.isVisibleToUser = isVisibleToUser;
-        prepareFetchData();
+        fetchDataInForeground();
     }
 
     public abstract void fetchData();
 
-    public boolean prepareFetchData() {
-        return prepareFetchData(false);
+    public boolean fetchDataInForeground() {
+        return fetchDataInForeground(false);
     }
 
-    public boolean prepareFetchData(boolean forceUpdate) {
+    public boolean fetchDataInForeground(boolean forceUpdate) {
         if (isVisibleToUser && isViewInitiated && (!isDataInitiated || forceUpdate)) {
+            fetchData();
+            isDataInitiated = true;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean fetchDataIfViewInitiated(boolean forceUpdate) {
+        if (isViewInitiated && (!isDataInitiated || forceUpdate)) {
             fetchData();
             isDataInitiated = true;
             return true;

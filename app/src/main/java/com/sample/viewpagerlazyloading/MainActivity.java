@@ -3,8 +3,7 @@ package com.sample.viewpagerlazyloading;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-
-import com.sample.viewpagerlazyloading.base.PageFragment;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,12 +15,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
-        MainTabAdapter adapter = new MainTabAdapter(getSupportFragmentManager());
-        adapter.addFragment(PageFragment.newInstance("1"), "1");
-        adapter.addFragment(PageFragment.newInstance("2"), "2");
-        adapter.addFragment(PageFragment.newInstance("3"), "3");
-        adapter.addFragment(PageFragment.newInstance("4"), "4");
-        adapter.addFragment(PageFragment.newInstance("5"), "5");
+        final MainTabAdapter adapter = new MainTabAdapter(getSupportFragmentManager());
+        adapter.addFragment(PageFragment.newInstance("title_1"), "1");
+        adapter.addFragment(PageFragment.newInstance("title_2"), "2");
+        adapter.addFragment(PageFragment.newInstance("title_3"), "3");
+        adapter.addFragment(PageFragment.newInstance("title_4"), "4");
+        adapter.addFragment(PageFragment.newInstance("title_5"), "5");
         mViewPager.setAdapter(adapter);
+
+        findViewById(R.id.btn_test).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adapter.notifyAllFragment();
+            }
+        });
     }
 }

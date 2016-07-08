@@ -13,14 +13,14 @@ import java.util.List;
  */
 public class MainTabAdapter extends FragmentPagerAdapter {
 
-    private final List<Fragment> mFragments = new ArrayList<>();
+    private final List<PageFragment> mFragments = new ArrayList<>();
     private final List<String> mFragmentTitles = new ArrayList<>();
 
     public MainTabAdapter(FragmentManager fm) {
         super(fm);
     }
 
-    public void addFragment(Fragment fragment, String title) {
+    public void addFragment(PageFragment fragment, String title) {
         mFragments.add(fragment);
         mFragmentTitles.add(title);
     }
@@ -38,5 +38,11 @@ public class MainTabAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return mFragmentTitles.get(position);
+    }
+
+    public void notifyAllFragment() {
+        for (PageFragment fragment : mFragments) {
+            fragment.fetchDataIfViewInitiated(true);
+        }
     }
 }

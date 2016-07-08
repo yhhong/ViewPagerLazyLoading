@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.sample.viewpagerlazyloading.MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/btn_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="Notify all fragments"
         app:layout_constraintBottom_toBottomOf="@+id/activity_main"
         app:layout_constraintLeft_toLeftOf="@+id/activity_main"
         app:layout_constraintRight_toRightOf="@+id/activity_main"
@@ -19,6 +21,81 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-</android.support.constraint.ConstraintLayout>
+    <RadioGroup
+        android:id="@+id/layout_widgets"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/button_ott"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingTop="7dp"
+            android:tag="0"
+            android:text="@string/radio_button"
+            android:textSize="9sp"
+            tools:ignore="SmallSp" />
+
+        <RadioButton
+            android:id="@+id/button_voip"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingTop="7dp"
+            android:tag="1"
+            android:text="@string/radio_button"
+            android:textSize="9sp"
+            tools:ignore="SmallSp" />
+
+        <RadioButton
+            android:id="@+id/button_discover"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingTop="7dp"
+            android:tag="2"
+            android:text="@string/radio_button"
+            android:textSize="9sp"
+            tools:ignore="SmallSp" />
+
+        <RadioButton
+            android:id="@+id/button_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingTop="7dp"
+            android:tag="3"
+            android:text="@string/radio_button"
+            android:textSize="9sp"
+            tools:ignore="SmallSp" />
+
+        <RadioButton
+            android:id="@+id/button_mine"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingTop="7dp"
+            android:tag="4"
+            android:text="@string/radio_button"
+            android:textSize="9sp"
+            tools:ignore="SmallSp" />
+    </RadioGroup>
+
+</LinearLayout>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ViewPagerLazyLoading</string>
+    <string name="radio_button">BUTTON</string>
 </resources>
